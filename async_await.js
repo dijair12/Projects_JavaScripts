@@ -9,7 +9,7 @@ const novaPromise = () => new Promise ((resolve, reject) => {
     }, 2000);
 });
 
-async function executarPromise() {
+async function executarNovaPromise() {
     try{
         const response = await novaPromise();
     }catch(erro){
@@ -17,4 +17,4 @@ async function executarPromise() {
     }
 }
 
-executarPromise();
+executarNovaPromise();

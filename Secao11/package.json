@@ -1,0 +1,22 @@
+{
+  "name": "Secao11",
+  "version": "1.0.0",
+  "description": "Aulas Online Js",
+  "main": "index.js",
+  "author": "Dijair",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "^7.12.8",
+    "@babel/core": "^7.12.9",
+    "@babel/preset-env": "^7.12.7",
+    "babel-loader": "^8.2.1",
+    "webpack": "^5.10.1",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "scripts": {
+    "dev": "webpack-dev-server"
+  },
+  "dependencies": {
+    "webpack-cli": "3.3.12"
+  }
+}

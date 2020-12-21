@@ -6,7 +6,7 @@ const novaPromise = () => new Promise ((resolve, reject) => {
         }else{
             reject(`O valor ${valor} é impar...`);
         }
-    }, 2000);
+    }, 1000);
 });
 
 async function executarNovaPromise() {

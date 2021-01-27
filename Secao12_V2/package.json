@@ -17,6 +17,7 @@
     "prod": "webpack-prod-server"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "webpack-cli": "3.3.12"
   }
 }

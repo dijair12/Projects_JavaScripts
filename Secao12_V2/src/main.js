@@ -1,3 +1,5 @@
+import api from './api';
+
 class App {
     constructor() {
         this.repositorios = [];
@@ -13,16 +15,30 @@ class App {
        this.formulario.onsubmit = evento => this.adicionarRepositorio(evento); 
     }
 
-    adicionarRepositorio(evento) {
+    async adicionarRepositorio(evento) {
         // Evita que o formulario recarregue a página
         evento.preventDefault();
 
+        //Recuperar o valor do input
+        let input = this.formulario.querySelector('input[id=repositorio]').value;
+
+        //Se o input vier vazio... sai da app
+        if(input.length === 0) {
+            return; //sempre sai da aplicação
+        }
+
+        let response = await api.get(`/repos/${input}`);
+
+        console.log(response);
+
+        let {name, description, html_url, owner: { avatar_url } } = response.data;
+
         //Adiciona o repositorio na lista
         this.repositorios.push({
-            nome: 'Nerds Fonts',
-            descricao: 'Iconic font aggregator',
-            avatar_url: 'https:/avatars0.githubusercontent.com/u/8083459?v=4',
-            link: 'https://github.com/ryanosis/nerd-fonts',
+            nome: name,
+            descricao: description,
+            avatar_url,
+            link: html_url,
         });
 
        this.renderizarTela();
@@ -63,10 +79,12 @@ class App {
 
             this.lista.appendChild(li);
 
-            this.formulario.querySelector('input[id=repositorio]').value = '';
+            let inputRepositorio = this.formulario.querySelector('input[id=repositorio]');
+
+            inputRepositorio.value = '';
 
             //Adiciona o foco no input
-            this.formulario.querySelector('input[id=repositorio]').focus();
+            inputRepositorio.focus();
         });
     }
 }

@@ -29,8 +29,6 @@ class App {
 
         let response = await api.get(`/repos/${input}`);
 
-        console.log(response);
-
         let {name, description, html_url, owner: { avatar_url } } = response.data;
 
         //Adiciona o repositorio na lista
@@ -49,7 +47,7 @@ class App {
         //Limpar o conteudo de lista
         this.lista.innerHTML = '';
 
-        // Percorrer toda a lista de repositorios e criar os elementos
+        // Percorrer toda a lista de repositorios e cria os elementos
         this.repositorios.forEach(repositorio =>{
 
             //<li>
@@ -77,6 +75,11 @@ class App {
             a.appendChild(txtA);
             li.appendChild(a);
 
+            /* this.repositorios.onclick = () => {
+                //this.deleteRepository(this.repositorios);
+            } */
+            console.log(this.repositorios);
+
             this.lista.appendChild(li);
 
             let inputRepositorio = this.formulario.querySelector('input[id=repositorio]');
@@ -86,7 +89,15 @@ class App {
             //Adiciona o foco no input
             inputRepositorio.focus();
         });
+
+        
     }
+
+    /* deleteRepository(repository) {
+        this.repositorios.splice(this.repositorios.indexOf(repository.textContent), 1);
+
+        this.renderizarTela();
+    } */
 }
 
 new App();
